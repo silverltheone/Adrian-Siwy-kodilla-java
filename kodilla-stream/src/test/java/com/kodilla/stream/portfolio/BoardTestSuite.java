@@ -141,7 +141,7 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double averageTasksTime = (long) project.getTaskLists().stream()
+        double averageTasksTime = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl->tl.getTasks().stream())
                 .mapToLong(n->LocalDate.now().toEpochDay() - n.getCreated().toEpochDay())
