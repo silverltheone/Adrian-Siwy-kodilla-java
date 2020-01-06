@@ -12,12 +12,14 @@ public class FlightSearchEngine {
         flightmap.put("London", false);
         flightmap.put("Hamburg", true);
 
-        if(flightmap.get(flight.getArrivalAirport()) != null && flightmap.get(flight.getDepartureAirport()) != null) {
-            System.out.println("Czy możliwy wylot z lotniska " + flight.getDepartureAirport() + " " + flightmap.get(flight.getDepartureAirport()));
-            System.out.println("Czy możliwy przylot na lotnisko: " + flight.getArrivalAirport() + " " + flightmap.get(flight.getArrivalAirport()));
+        if(flightmap.get(flight.getArrivalAirport()) != null) {
+            if(flightmap.get(flight.getArrivalAirport()) == true) {
+                System.out.println("Przylot na lotnisko: " + flight.getArrivalAirport() + " jest możliwy.");
+            } else {
+                System.out.println("Przylot na lotnisko: " + flight.getArrivalAirport() + " nie jest możliwy.");
+            }
         } else  {
             throw new RouteNotFoundException();
         }
-
     }
 }
