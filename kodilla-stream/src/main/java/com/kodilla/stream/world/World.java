@@ -24,7 +24,7 @@ public final class World {
         continentList.add(continent);
     }
 
-    public boolean removeContinent(Continent continent){
+    public boolean removeContinent(Continent continent) {
         return continentList.remove(continent);
     }
 

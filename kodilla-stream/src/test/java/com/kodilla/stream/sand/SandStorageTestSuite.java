@@ -17,7 +17,7 @@ public class SandStorageTestSuite {
         continents.add(new Africa());
         //When
         BigDecimal totalSand = BigDecimal.ZERO;
-        for(SandStorage continent : continents) {
+        for (SandStorage continent : continents) {
             totalSand = totalSand.add(continent.getSandBeansQuantity());
         }
         //Then

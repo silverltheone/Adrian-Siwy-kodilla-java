@@ -12,13 +12,13 @@ public class FlightSearchEngine {
         flightmap.put("London", false);
         flightmap.put("Hamburg", true);
 
-        if(flightmap.get(flight.getArrivalAirport()) != null) {
-            if(flightmap.get(flight.getArrivalAirport()) == true) {
+        if (flightmap.get(flight.getArrivalAirport()) != null) {
+            if (flightmap.get(flight.getArrivalAirport()) == true) {
                 System.out.println("Przylot na lotnisko: " + flight.getArrivalAirport() + " jest możliwy.");
             } else {
                 System.out.println("Przylot na lotnisko: " + flight.getArrivalAirport() + " nie jest możliwy.");
             }
-        } else  {
+        } else {
             throw new RouteNotFoundException();
         }
     }

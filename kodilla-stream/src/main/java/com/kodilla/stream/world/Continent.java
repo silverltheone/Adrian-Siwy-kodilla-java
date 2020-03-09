@@ -25,7 +25,7 @@ public final class Continent {
         countryList.add(country);
     }
 
-    public boolean removeCountry(Country country){
+    public boolean removeCountry(Country country) {
         return countryList.remove(country);
     }
 

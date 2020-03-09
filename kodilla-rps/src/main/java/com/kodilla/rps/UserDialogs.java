@@ -7,16 +7,19 @@ import java.util.Scanner;
 public class UserDialogs {
     public static UserSelection getUserSelection() {
         Scanner scanPickForPlayerOne = new Scanner(System.in);
-        while(true) {
+        while (true) {
             System.out.println("Wybierz swój ruch: [1] Kamień - [2] Papier - [3] Nożyce");
             String pickedSign = scanPickForPlayerOne.nextLine();
-            switch(pickedSign) {
-                case "1": System.out.println("Wybrałeś [1] - Kamień");
-                return UserSelection.ROCK;
-                case "2": System.out.println("Wybrałeś [2] - Papier");
-                return UserSelection.PAPER;
-                case "3": System.out.println("Wybrałeś [3] = Nożyce");
-                return UserSelection.SCISSORS;
+            switch (pickedSign) {
+                case "1":
+                    System.out.println("Wybrałeś [1] - Kamień");
+                    return UserSelection.ROCK;
+                case "2":
+                    System.out.println("Wybrałeś [2] - Papier");
+                    return UserSelection.PAPER;
+                case "3":
+                    System.out.println("Wybrałeś [3] = Nożyce");
+                    return UserSelection.SCISSORS;
                 default:
                     System.out.println("Zły wybór spróbuj jeszcze raz");
             }

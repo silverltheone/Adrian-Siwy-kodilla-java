@@ -14,7 +14,7 @@ public class BookDirectoryTestSuite {
 
     private List<Book> generateListOfBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
-        for(int n=1; n<= booksQuantity; n++) {
+        for (int n = 1; n <= booksQuantity; n++) {
             Book theBook = new Book("Title" + n, "Author" + n, 1970 + n);
             resultList.add(theBook);
         }
@@ -99,7 +99,8 @@ public class BookDirectoryTestSuite {
         //Then
         Assert.assertEquals(0, theListOf0Books.size());
     }
-@Test
+
+    @Test
     public void testListBooksInHandOf1Book() {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
@@ -114,7 +115,8 @@ public class BookDirectoryTestSuite {
         //Then
         Assert.assertEquals(1, theListOf1Book.size());
     }
-@Test
+
+    @Test
     public void testListBooksInHandOf5Books() {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);

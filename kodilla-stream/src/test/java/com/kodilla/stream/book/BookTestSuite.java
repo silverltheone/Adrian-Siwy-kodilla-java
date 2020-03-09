@@ -15,8 +15,8 @@ public class BookTestSuite {
         List<Book> books = bookDirectory.getList();
         //Then
         int numberOfBooksPublicatedAfter2007 = 0;
-        for(Book book : books) {
-            if(book.getYearOfPubliocation() > 2007) {
+        for (Book book : books) {
+            if (book.getYearOfPubliocation() > 2007) {
                 numberOfBooksPublicatedAfter2007++;
             }
         }

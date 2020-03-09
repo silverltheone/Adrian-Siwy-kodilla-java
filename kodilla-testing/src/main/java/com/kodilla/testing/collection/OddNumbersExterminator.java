@@ -1,4 +1,5 @@
 package com.kodilla.testing.collection;
+
 import java.util.ArrayList;
 
 public class OddNumbersExterminator {

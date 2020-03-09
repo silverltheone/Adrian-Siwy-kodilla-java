@@ -16,11 +16,11 @@ public final class ForumUser {
         this.location = location;
     }
 
-    public void addFriend(ForumUser user){
+    public void addFriend(ForumUser user) {
         friends.add(user);
     }
 
-    public boolean removeFriend(ForumUser user){
+    public boolean removeFriend(ForumUser user) {
         return friends.remove(user);
     }
 
@@ -64,6 +64,7 @@ public final class ForumUser {
     public int hashCode() {
         return userName.hashCode();
     }
+
     public Set<String> getLocationsOfFriends() {
         return friends.stream()
                 .map(friend -> friend.getLocation())

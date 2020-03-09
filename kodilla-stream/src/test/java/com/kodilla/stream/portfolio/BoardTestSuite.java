@@ -143,8 +143,8 @@ public class BoardTestSuite {
         inProgressTasks.add(new TaskList("In progress"));
         double averageTasksTime = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
-                .flatMap(tl->tl.getTasks().stream())
-                .mapToLong(n->LocalDate.now().toEpochDay() - n.getCreated().toEpochDay())
+                .flatMap(tl -> tl.getTasks().stream())
+                .mapToLong(n -> LocalDate.now().toEpochDay() - n.getCreated().toEpochDay())
                 .average().orElse(0);
         //Then
         Assert.assertEquals(10, averageTasksTime, 0.001);

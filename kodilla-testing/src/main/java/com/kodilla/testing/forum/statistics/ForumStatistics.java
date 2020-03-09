@@ -15,19 +15,19 @@ public class ForumStatistics {
 
         commentsSum = statistic.commentsCount();
 
-        if(statistic.userNames().size() != 0) {
+        if (statistic.userNames().size() != 0) {
             postPerUser = postsSum / usersSum;
         } else {
             postPerUser = 0;
         }
 
-        if(statistic.userNames().size() != 0) {
+        if (statistic.userNames().size() != 0) {
             commentsPerUser = commentsSum / usersSum;
         } else {
             commentsPerUser = 0;
         }
 
-        if(statistic.postsCount() != 0) {
+        if (statistic.postsCount() != 0) {
             commentsPerPost = commentsSum / postsSum;
         } else {
             commentsPerPost = 0;

@@ -7,7 +7,7 @@ public class ArrayOperationsTestSuite {
     @Test
     public void testGetAverage() {
         //Given
-        int[] elements = {1,2,3};
+        int[] elements = {1, 2, 3};
         //When
         double average = ArrayOperations.getAverage(elements);
         //Then

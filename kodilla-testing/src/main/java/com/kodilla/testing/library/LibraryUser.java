@@ -10,6 +10,7 @@ public class LibraryUser {
         this.lastName = lastName;
         this.peselId = peselId;
     }
+
     public String getFirstName() {
         return firstName;
     }

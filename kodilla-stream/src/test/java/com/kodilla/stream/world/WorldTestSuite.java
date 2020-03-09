@@ -25,8 +25,6 @@ public class WorldTestSuite {
         Country egipt = new Country("Egipt", new BigDecimal("40000000"));
 
 
-
-
         Continent europe = new Continent("Europe");
         Continent nAmerica = new Continent("North America");
         Continent sAmerica = new Continent("South America");

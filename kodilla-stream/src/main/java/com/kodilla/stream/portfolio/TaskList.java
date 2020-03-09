@@ -11,11 +11,11 @@ public final class TaskList {
         this.name = name;
     }
 
-    public void addTask(Task task){
+    public void addTask(Task task) {
         tasks.add(task);
     }
 
-    public boolean removeTask(Task task){
+    public boolean removeTask(Task task) {
         return tasks.remove(task);
     }
 
