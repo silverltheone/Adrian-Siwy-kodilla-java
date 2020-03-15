@@ -1,18 +1,54 @@
 package com.kodilla.good.patterns.challenges.smallAirport;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class SearchEngine {
 
-    public void searchEngineFromDeparture (String departureAirport) {
+    public List<Flight> searchEngineFromDeparture (String departureAirport) {
+        List<Flight> searchingFlightsFromDeparture = new ArrayList<>();
         FlightsDatabase flightsDatabase = new FlightsDatabase();
-        flightsDatabase.makingDatabase().stream()
+        searchingFlightsFromDeparture =  flightsDatabase.makingDatabase().stream()
                 .filter(s -> s.getDepartureAirport().equals(departureAirport))
-                .forEach(n -> System.out.println("Znalezione wyloty z: " + n.getDepartureAirport() + " to: " + n.getDepartureAirport() + " - " + n.getArrivalAirport()));
+                .collect(Collectors.toList());
+        System.out.println("Zalezione loty z: " + departureAirport + " to: ");
+        searchingFlightsFromDeparture.stream()
+                .forEach(n -> System.out.println(n.getDepartureAirport() + " - " + n.getArrivalAirport()));
+        return searchingFlightsFromDeparture;
     }
 
-    public void searchEngineToArrival (String arrivalAirport) {
+    public List<Flight> searchEngineToArrival (String arrivalAirport) {
+        List<Flight> searchingFlightsFromArrival = new ArrayList<>();
         FlightsDatabase flightsDatabase = new FlightsDatabase();
-        flightsDatabase.makingDatabase().stream()
+        searchingFlightsFromArrival =  flightsDatabase.makingDatabase().stream()
                 .filter(s -> s.getArrivalAirport().equals(arrivalAirport))
-                .forEach(n -> System.out.println("Znalezione przyloty do: " + n.getArrivalAirport() + "to: " + n.getDepartureAirport() + " - " + n.getArrivalAirport()));
+                .collect(Collectors.toList());
+        System.out.println("Zalezione loty do: " + arrivalAirport + " to: ");
+        searchingFlightsFromArrival.stream()
+                .forEach(n -> System.out.println(n.getDepartureAirport() + " - " + n.getArrivalAirport()));
+        return searchingFlightsFromArrival;
+    }
+
+    public List<Flight> searchEngineThru (String departureAirport, String thruAirport, String arrivalAirport) {
+        List<Flight> searchingFlightsFrom = new ArrayList<>();
+        List<Flight> searchingFlightsThru = new ArrayList<>();
+        List<Flight> finalSearchresult = new ArrayList<>();
+        FlightsDatabase flightsDatabase = new FlightsDatabase();
+        searchingFlightsFrom = flightsDatabase.makingDatabase().stream()
+                .filter(s -> s.getDepartureAirport().equals(departureAirport))
+                .filter(n -> n.getArrivalAirport().equals(thruAirport))
+                .collect(Collectors.toList());
+        searchingFlightsThru = flightsDatabase.makingDatabase().stream()
+                .filter(m -> m.getDepartureAirport().equals(thruAirport))
+                .filter(o -> o.getArrivalAirport().equals(arrivalAirport))
+                .collect(Collectors.toList());
+
+        finalSearchresult.addAll(searchingFlightsFrom);
+        finalSearchresult.addAll(searchingFlightsThru);
+        System.out.println("Znaleziono przelot z: " + departureAirport + " do: " + arrivalAirport + " przez: :" + thruAirport);
+        finalSearchresult.stream()
+                .forEach(p -> System.out.println(p.getDepartureAirport() + " " + p.getArrivalAirport()));
+        return finalSearchresult;
     }
 }
