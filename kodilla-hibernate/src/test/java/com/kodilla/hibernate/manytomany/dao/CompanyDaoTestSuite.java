@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
@@ -49,6 +51,10 @@ public class CompanyDaoTestSuite {
         int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
+
 
         //Then
         Assert.assertNotEquals(0, softwareMachineId);
@@ -56,13 +62,9 @@ public class CompanyDaoTestSuite {
         Assert.assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
+
     }
 
     @Test
@@ -88,25 +90,22 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
 
         //When
         List<Employee> employeesRetrievedByName = employeeDao.retrieveNamedEmployees("Kovalsky");
-        List<Company> companyByNameFragment = companyDao.retrieveNameFragment();
+        List<Company> companyByNameFragment = companyDao.retrieveNameFragment("Dat");
 
         //Then
         Assert.assertEquals(1, employeesRetrievedByName.size());
         Assert.assertEquals(1, companyByNameFragment.size());
 
         //CleanUp
-        companyDao.deleteById(softwareMachineId);
-        companyDao.deleteById(dataMaestersId);
-        companyDao.deleteById(greyMatterId);
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
     }
-
-
 }

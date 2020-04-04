@@ -4,6 +4,7 @@ import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,13 @@ public class InvoiceDaoTestSuite {
     @Autowired
     InvoiceDao invoiceDao;
 
+    @Autowired
+    ProductDao productDao;
+
+    @Autowired
+    ItemDao itemDao;
+
+    @Test
     public void testInvoiceDaoSave() {
         //Given
         Invoice invoice = new Invoice("001");
@@ -43,11 +51,18 @@ public class InvoiceDaoTestSuite {
         //When
         invoiceDao.save(invoice);
         int invoiceId = invoice.getId();
+        productDao.save(product1);
+        productDao.save(product2);
+        itemDao.save(item1);
+        itemDao.save(item2);
+        itemDao.save(item3);
 
         //Then
         Assert.assertNotEquals(0, invoiceId);
 
         //CleanUp
-        invoiceDao.deleteById(invoiceId);
+        itemDao.deleteAll();
+        invoiceDao.deleteAll();
+        productDao.deleteAll();
     }
 }

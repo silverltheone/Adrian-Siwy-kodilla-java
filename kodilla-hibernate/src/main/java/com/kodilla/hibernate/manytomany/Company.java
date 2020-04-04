@@ -9,7 +9,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveNameFragment",
         query = "SELECT * FROM COMPANIES" +
-                " WHERE COMPANY_NAME LIKE 'Dat%'",
+                " WHERE COMPANY_NAME LIKE CONCAT(:NAMEFRAGMENT, '%')",
         resultClass = Company.class
 )
 @Entity
