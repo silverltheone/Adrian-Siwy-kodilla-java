@@ -2,6 +2,8 @@ package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.dao.CompanyDao;
+import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,12 +12,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ManytoManyFacadeTest extends TestCase {
 
     @Autowired
     private ManytoManyFacade manytoManyFacade;
+
+    @Autowired
+    private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     public void shouldGetEmployees() {
@@ -44,9 +54,24 @@ public class ManytoManyFacadeTest extends TestCase {
         employee3.getCompanies().add(company1);
         employee3.getCompanies().add(company3);
 
+        companyDao.save(company1);
+        companyDao.save(company2);
+        companyDao.save(company3);
+
+        employeeDao.save(employee1);
+        employeeDao.save(employee2);
+        employeeDao.save(employee3);
+
         //When
+        List<CompanyDto> testListCompanies = manytoManyFacade.getCompanies("Mechanics");
+
 
         //Then
-        Assert.assertEquals(0, manytoManyFacade.getCompanies("Mechanics").size());
+        Assert.assertEquals(1, testListCompanies.size());
+
+        //CleanUp
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
+
     }
 }
