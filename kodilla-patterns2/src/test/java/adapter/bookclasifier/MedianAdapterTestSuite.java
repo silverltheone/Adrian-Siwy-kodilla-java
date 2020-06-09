@@ -1,7 +1,6 @@
 package adapter.bookclasifier;
 
 import adapter.bookclasifier.librarya.Book;
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
