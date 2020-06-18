@@ -22,10 +22,10 @@ public class FacebookTestingApp {
 
         WebElement selectMonth = driver.findElement(By.xpath(XPATH_SELECT_MONTH));
         Select selectMonthBoard = new Select(selectMonth);
-        selectMonthBoard.selectByIndex(3);
+        selectMonthBoard.selectByValue("3");
 
         WebElement selectYear = driver.findElement(By.xpath(XPATH_SELECT_YEAR));
         Select selectYearBoard = new Select(selectYear);
-        selectYearBoard.selectByIndex(38);
+        selectYearBoard.selectByValue("1983");
     }
 }
